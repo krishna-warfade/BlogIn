@@ -2,20 +2,25 @@ import { useState, useEffect } from 'react'; //useEffect is used to perform side
 import BlogList from './BlogList';
 
 const Home = () => {
-    const [blogs, setBlogs] = useState(null);
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id); //to store the blogs in array except the one with the id that is passed
-        setBlogs(newBlogs);
-    };
+    const [blogs, setBlogs] = useState(null); //initially blogs is set to null, it will be updated after fetching data from db.json
+    const [isPending, setIsPending] = useState(true); //isPending is used to show loading state
     useEffect(() => {
-        console.log('useEffect ran'); //this will run after the any component is rendered
-        console.log(blogs);
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs') //fetching data from db.json
+            .then(res => {
+               return res.json(); //converting response to json
+            })
+            .then(data => {
+                setBlogs(data); //setting blogs state with the fetched data
+                setIsPending(false); //setting isPending to false after data is fetched
+            })
+        }, 1000); //Simulating a delay of 1 second before fetching data
     }, []);
     return ( 
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
-            {/* <BlogList blogs={blogs.filter((blog) =>blog.author==="mario")} title="Mario's Blogs"/> */}
-            </div>
+            {isPending && <div className='loader'>Loading...</div>} {/* Conditional rendering: if isPending is true, show loading message */}
+            {blogs && <BlogList blogs={blogs} title="All Blogs"/>} {/* Conditional rendering: if blogs is not null, render BlogList */}
+        </div>
      );
 }
  
