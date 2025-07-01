@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; //useEffect is used to perform side effects in function components
 import BlogList from './BlogList';
 
 const Home = () => {
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
-    ]);
+    const [blogs, setBlogs] = useState(null);
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id); //to store the blogs in array except the one with the id that is passed
         setBlogs(newBlogs);
     };
+    useEffect(() => {
+        console.log('useEffect ran'); //this will run after the any component is rendered
+        console.log(blogs);
+    }, []);
     return ( 
         <div className="home">
             <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
