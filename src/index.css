@@ -33,9 +33,9 @@
   margin: 40px auto;
   padding: 20px;
 }
-/* .home {
-  text-align: center;
-} */
+.home {
+  margin: 20px;
+}
 .blog-preview{
   padding:10px 16px;
   margin:20px 0;
