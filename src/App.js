@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './HomePage';
 import Create from './Create';
+import BlogDetails from './BlogDetails'; //importing BlogDetails component to display individual blog details
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'; //for routing
 
 function App() {
@@ -16,6 +17,10 @@ function App() {
                   <Route path='/create'>
                     <Create /> {/* Create component will be rendered at the /create path */}
                   </Route>
+                  <Route path='/blogs/:id'>
+                    <BlogDetails /> {/* BlogDetails component will be rendered at the /blogs/:id path */}
+                  </Route>
+                  
                 </Switch>
             </div>
       </div>
