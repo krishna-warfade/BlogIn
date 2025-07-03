@@ -15,7 +15,7 @@ const BlogDetails = () => {
     }
     return ( 
         <div className="blog-details">
-            {isPending && <div className="loader">Loading...</div>} {/* Display loading message while fetching data */}
+            {isPending && <div className="loader">Loading <span className="dots"></span></div>} {/* Display loading message while fetching data */}
             {error && <div>{error}</div>} {/* Display error message if there is an error fetching data */}
             {blog && (
                 <article>

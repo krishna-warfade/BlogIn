@@ -6,7 +6,7 @@ const Home = () => {
     return ( 
         <div className="home">
             {error && <div>{ error }</div>}
-            {isPending && <div className='loader'>Loading...</div>} {/* Conditional rendering: if isPending is true, show loading message */}
+            {isPending && <div className='loader'>Loading <span className="dots"></span></div>} {/* Conditional rendering: if isPending is true, show loading message */}
             {blogs && <BlogList blogs={blogs} title="All Blogs"/>} {/* Conditional rendering: if blogs is not null, render BlogList */}
         </div>
      );
