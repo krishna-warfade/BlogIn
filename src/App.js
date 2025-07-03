@@ -3,6 +3,7 @@ import Home from './HomePage';
 import Create from './Create';
 import BlogDetails from './BlogDetails'; //importing BlogDetails component to display individual blog details
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'; //for routing
+import NotFound from './NotFound'; // Importing NotFound component to handle 404 errors
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
                   <Route path='/blogs/:id'>
                     <BlogDetails /> {/* BlogDetails component will be rendered at the /blogs/:id path */}
                   </Route>
-                  
+                  <Route path='*'> {/* Catch-all route for unmatched paths*/}
+                    <NotFound /> {/* NotFound component will be rendered for any unmatched routes */}
+                  </Route>
                 </Switch>
             </div>
       </div>
