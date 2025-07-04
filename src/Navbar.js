@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; //for routing
 
-const Navbar = () => {
+const Navbar = ({toggleTheme, theme}) => {
     return ( 
         <div className="navbar">
             <h1 style={{
@@ -21,6 +21,21 @@ const Navbar = () => {
                     borderRadius: "10% 30%",
                     padding: "10px 20px"
                 }}>New Blog</Link>
+                <button 
+                    onClick={toggleTheme}
+                    style={{
+                        marginLeft: "15px",
+                        backgroundColor: "transparent",
+                        border: "2px solid #35cbf1",
+                        color: "#35cbf1",
+                        borderRadius: "8px",
+                        padding: "8px 12px",
+                        cursor: "pointer",
+                        fontWeight: "bold"
+                    }}
+                >
+                    {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+                </button>
             </div>
         </div>
      );

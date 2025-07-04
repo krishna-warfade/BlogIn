@@ -1,0 +1,22 @@
+.light {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --accent-color: #35cbf1;
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --accent-color: #4ecdc4;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar, .content, .blog-preview {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
